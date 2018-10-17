@@ -54,3 +54,7 @@ def create_product():
 @admin.route('/sales',methods = ['GET'])
 def admin_get_all_sales():
     return jsonify(sales)
+
+@attendant.route('/products',methods = ['GET'])
+def attendant_view_all_products():
+    return jsonify('products')
