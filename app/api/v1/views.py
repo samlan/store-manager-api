@@ -58,3 +58,9 @@ def admin_get_all_sales():
 @attendant.route('/products',methods = ['GET'])
 def attendant_view_all_products():
     return jsonify('products')
+
+@attendant.route('/products/<int:product_id>', methods = ['GET'])
+def attendant_view_one(product_id):
+    if product_id not in products.keys():
+        abort(404)
+    return jsonify(products[product_id])
