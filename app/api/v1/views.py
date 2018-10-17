@@ -42,3 +42,11 @@ def admin_get_one_product(product_id):
     if product_id not in products.keys():
         abort(404)
     return jsonify(products[product_id])
+
+@admin.route('/products', methods=['POST'])
+def create_product():
+    index = len(products.keys())
+    if not request.json:
+        abort(400)
+    products[index+1] = request.json
+    return jsonify(products),200
