@@ -50,3 +50,7 @@ def create_product():
         abort(400)
     products[index+1] = request.json
     return jsonify(products),200
+
+@admin.route('/sales',methods = ['GET'])
+def admin_get_all_sales():
+    return jsonify(sales)
