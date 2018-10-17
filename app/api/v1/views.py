@@ -36,3 +36,9 @@ products = {
 @admin.route('/products',methods = ['GET'])
 def admin_get_all_products():
     return jsonify(products)
+
+@admin.route('products/<int:product_id>', methods = ['GET'])
+def admin_get_one_product(product_id):
+    if product_id not in products.keys():
+        abort(404)
+    return jsonify(products[product_id])
