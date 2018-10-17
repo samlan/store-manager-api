@@ -64,3 +64,11 @@ def attendant_view_one(product_id):
     if product_id not in products.keys():
         abort(404)
     return jsonify(products[product_id])
+
+@attendant.route('/sales', methods = ['POST'])
+def attendant_create_sales_order():
+    index = len(sales.keys())
+    if not request.json:
+        abort(400)
+    sales[index+1] = request.json
+    return jsonify(sales),200
